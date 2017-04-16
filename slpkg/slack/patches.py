@@ -250,7 +250,7 @@ class Patches(object):
                     self.msg.template(78)
                     try:
                         answer = raw_input("\nThe kernel has been upgraded, "
-                                           "reinstall `LILO` [y/N]? "),strip()
+                                           "reinstall `LILO` [y/N]? ").strip()
                     except EOFError:
                         print("")
                         raise SystemExit()

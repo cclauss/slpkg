@@ -50,6 +50,11 @@ from slpkg.binary.greps import repo_data
 from slpkg.slack.mirrors import mirrors
 from slpkg.slack.slack_version import slack_ver
 
+try:
+    raw_input          # Python 2
+except NameError:
+    raw_input = input  # Python 3
+
 
 class Patches(object):
     """Upgrade distribution from official Slackware mirrors
@@ -245,7 +250,7 @@ class Patches(object):
                     self.msg.template(78)
                     try:
                         answer = raw_input("\nThe kernel has been upgraded, "
-                                           "reinstall `LILO` [y/N]? ")
+                                           "reinstall `LILO` [y/N]? "),strip()
                     except EOFError:
                         print("")
                         raise SystemExit()
@@ -275,5 +280,5 @@ class Patches(object):
         print("{0}Update package lists ?{1}".format(self.meta.color["GREEN"],
                                                     self.meta.color["ENDC"]))
         print("=" * 79)
-        if self.msg.answer() in ["y", "Y"]:
+        if self.msg.answer() in ("y", "Y"):
             Update().repository(["slack"])

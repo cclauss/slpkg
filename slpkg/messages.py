@@ -27,6 +27,11 @@ import itertools
 
 from slpkg.__metadata__ import MetaData as _meta_
 
+try:
+    raw_input          # Python 2
+except NameError:
+    raw_input = input  # Python 3
+
 
 class Msg(object):
     """Messages control

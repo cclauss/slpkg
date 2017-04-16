@@ -22,6 +22,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
+from __future__ import print_function
 import os
 
 from slpkg.sizes import units
@@ -100,7 +101,7 @@ class RepoInfo(object):
             self.form["Last updated:"] = last_upd
         print("")
         for key, value in sorted(self.form.iteritems()):
-            print self.meta.color["GREY"] + key + self.meta.color["ENDC"], value
+            print(self.meta.color["GREY"] + key + self.meta.color["ENDC"], value)
         print("")
         raise SystemExit()
 

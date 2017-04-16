@@ -29,6 +29,11 @@ from slpkg.__metadata__ import MetaData as _meta_
 
 from slpkg.pkg.manager import PackageManager
 
+try:
+    raw_input          # Python 2
+except NameError:
+    raw_input = input  # Python 3
+
 
 class Auto(object):
     """Select Slackware command to install packages
@@ -60,7 +65,7 @@ class Auto(object):
                 self.meta.color["ENDC"]))
         self.msg.template(78)
         try:
-            self.choice = raw_input(" > ")
+            self.choice = raw_input(" > ").strip()
         except EOFError:
             print("")
             raise SystemExit()

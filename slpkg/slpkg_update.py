@@ -33,6 +33,11 @@ from slpkg.downloader import Download
 from slpkg.grep_md5 import pkg_checksum
 from slpkg.__metadata__ import MetaData as _meta_
 
+try:
+    raw_input          # Python 2
+except NameError:
+    raw_input = input  # Python 3
+
 
 def it_self_update():
     """Check from GitHub slpkg repository if new version is available

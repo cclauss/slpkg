@@ -48,6 +48,11 @@ from slpkg.sbo.slack_find import slack_package
 
 from slpkg.slack.slack_version import slack_ver
 
+try:
+    raw_input          # Python 2
+except NameError:
+    raw_input = input  # Python 3
+
 
 class SBoNetwork(object):
     """View SBo site in terminal and also read, build or
@@ -172,7 +177,7 @@ class SBoNetwork(object):
         try:
             message = "  Choose an option > "
             self.choice = raw_input("{0}{1}{2}".format(self.grey, message,
-                                                       self.endc))
+                                                       self.endc)).strip()
         except EOFError:
             print("")
             raise SystemExit()

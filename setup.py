@@ -81,6 +81,7 @@ setup(
         "Programming Language :: Python",
         "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
         "Programming Language :: Unix Shell",
         "Topic :: Software Development :: Build Tools",
         "Topic :: System :: Archiving :: Packaging",

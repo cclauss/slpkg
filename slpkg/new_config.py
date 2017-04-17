@@ -30,6 +30,11 @@ from slpkg.messages import Msg
 from slpkg.utils import Utils
 from slpkg.__metadata__ import MetaData as _meta_
 
+try:
+    raw_input          # Python 2
+except NameError:
+    raw_input = input  # Python 3
+
 
 class NewConfig(object):
     """Manage .new configuration files
@@ -218,10 +223,8 @@ class NewConfig(object):
             new = Utils().read_file(n).splitlines()
         with open(n[:-4], "w") as out:
             for l1, l2 in itertools.izip_longest(old, new):
-                if l1 is None:
-                    l1 = ""
-                if l2 is None:
-                    l2 = ""
+                l1 = l1 or ""
+                l2 = l2 or ""
                 if l1 != l2:
                     out.write(l2 + "\n")
                 else:

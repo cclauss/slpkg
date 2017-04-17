@@ -57,5 +57,6 @@ class Clean(object):
                 print("Remove directory --> {0}".format(d))
                 shutil.rmtree(d)
 
+
 if __name__ == "__main__":
     Clean().start()

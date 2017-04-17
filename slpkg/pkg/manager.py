@@ -36,6 +36,11 @@ from slpkg.dialog_box import DialogUtil
 from slpkg.splitting import split_package
 from slpkg.__metadata__ import MetaData as _meta_
 
+try:
+    raw_input          # Python 2
+except NameError:
+    raw_input = input  # Python 3
+
 
 class PackageManager(object):
     """Package manager class for install, upgrade,
@@ -107,7 +112,7 @@ class PackageManager(object):
                 else:
                     remove_pkg = raw_input(
                         "\nAre you sure to remove {0} {1} [y/N]? ".format(
-                            str(len(self.removed)), msg))
+                            str(len(self.removed)), msg)).strip()
             except EOFError:
                 print("")   # new line at exit
                 raise SystemExit()
@@ -141,7 +146,7 @@ class PackageManager(object):
             try:
                 remove_dep = raw_input(
                     "\nRemove dependencies (maybe used by "
-                    "other packages) [y/N]? ")
+                    "other packages) [y/N]? ").strip()
                 print("")
             except EOFError:
                 print("")  # new line at exit
@@ -308,7 +313,7 @@ class PackageManager(object):
             print("| Insert packages to exception remove:")
             self.msg.template(78)
             try:
-                self.skip = raw_input(" > ").split()
+                self.skip = raw_input(" > ").strip().split()
             except EOFError:
                 print("")
                 raise SystemExit()
@@ -479,7 +484,7 @@ class PackageManager(object):
                         read = raw_input("\nPress {0}Enter{1} to "
                                          "continue... ".format(
                                              self.meta.color["CYAN"],
-                                             self.meta.color["ENDC"]))
+                                             self.meta.color["ENDC"])).strip()
                         if read in ["Q", "q"]:
                             break
                         print("")   # new line after page

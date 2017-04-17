@@ -5,7 +5,7 @@ python:
 before_install:
   - pip install --upgrade pip
   - pip install flake8
-  - flake8 . --count --statistics --exit-zero
+  - flake8 . --count --max-line-length=82 --statistics --exit-zero
 # command to install dependencies
 install: "pip install -r requirements.txt"
 # command to run tests
